@@ -1,0 +1,20 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/**/*'
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.3
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
