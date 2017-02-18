@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 module JsonHelper
   def parse_body(response)
-    JSON.parse(response.body).symbolize_keys
+    body = JSON.parse(response.body)
+    return body.map(&:symbolize_keys) if body.is_a? Array
+    body.symbolize_keys
   end
 
   def post_attributes(post)

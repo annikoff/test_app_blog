@@ -6,8 +6,9 @@ module API
 
       def index
         scope = posts.offset(offset).limit(limit).order(published_at: :desc)
-        posts = ActiveModel::SerializableResource.new(scope.to_a)
-        render json: { total_count: posts_count, pages: pages, posts: posts }
+        response.set_header('posts_count', posts_count)
+        response.set_header('pages', pages)
+        render json: scope
       end
 
       def show
@@ -52,8 +53,8 @@ module API
       end
 
       def offset
-        offset = params[:page].to_i
-        offset.zero? ? offset : offset - 1
+        offset = (params[:page].to_i - 1) * limit
+        offset.negative? ? 0 : offset
       end
 
       def pages

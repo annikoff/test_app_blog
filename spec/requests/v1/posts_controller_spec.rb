@@ -4,6 +4,7 @@ require 'spec_helper'
 # rubocop:disable Metrics/BlockLength
 describe API::V1::PostsController do
   let(:user) { create(:user) }
+  let(:alt_user) { create(:user) }
 
   describe 'authenticate' do
     it 'rejects authentications' do
@@ -14,27 +15,30 @@ describe API::V1::PostsController do
   end
 
   describe 'index' do
-    before { create_list(:post, 35, author: user) }
+    before do
+      create_list(:post, 35, author: user)
+      create_list(:post, 10, author: alt_user)
+    end
 
     it 'returns an array of posts' do
       get api_v1_posts_path, headers: http_authorization(user)
 
       expect(response).to have_http_status(200)
-      json = parse_body(response)
-      expect(json[:total_count]).to eq(35)
-      expect(json[:pages]).to eq(1)
-      expect(json[:posts].size).to eq(35)
+      array = parse_body(response)
+      expect(array.size).to eq(35)
+      expect(array.first).to eq(post_attributes(user.posts.last))
+      expect(response.headers['posts_count']).to eq(35)
+      expect(response.headers['pages']).to eq(1)
     end
 
     it 'returns an array of posts with pagination' do
-      get api_v1_posts_path(page: 2, per_page: 10),
+      get api_v1_posts_path(page: 4, per_page: 10),
           headers: http_authorization(user)
 
       expect(response).to have_http_status(200)
-      json = parse_body(response)
-      expect(json[:total_count]).to eq(35)
-      expect(json[:pages]).to eq(4)
-      expect(json[:posts].size).to eq(10)
+      expect(parse_body(response).size).to eq(5)
+      expect(response.headers['posts_count']).to eq(35)
+      expect(response.headers['pages']).to eq(4)
     end
   end
 
