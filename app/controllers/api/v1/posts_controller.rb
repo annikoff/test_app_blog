@@ -6,7 +6,8 @@ module API
 
       def index
         scope = posts.offset(offset).limit(limit)
-        render json: { total_count: posts_count, pages: pages, posts: scope }
+        posts = ActiveModel::SerializableResource.new(scope.to_a)
+        render json: { total_count: posts_count, pages: pages, posts: posts }
       end
 
       def show
