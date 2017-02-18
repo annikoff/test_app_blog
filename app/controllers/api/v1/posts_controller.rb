@@ -5,7 +5,7 @@ module API
       before_action :find_post, only: [:show, :update, :destroy]
 
       def index
-        scope = posts.offset(offset).limit(limit)
+        scope = posts.offset(offset).limit(limit).order(published_at: :desc)
         posts = ActiveModel::SerializableResource.new(scope.to_a)
         render json: { total_count: posts_count, pages: pages, posts: posts }
       end
