@@ -5,7 +5,7 @@ rvm: 2.3.3
 addons:
   postgresql: "9.4"
   code_climate:
-    repo_token: 5c92b41b364eb925b2b10a46544366449d2ae05a1d50bd9624f4abc638374541
+    repo_token: db082b1209129f33eff8a99b0b60004964f4043f44467bcb294ef748fee3698f
 
 notifications:
   email: false

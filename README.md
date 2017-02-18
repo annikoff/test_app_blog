@@ -1,6 +1,8 @@
 # Test application
 
 [![Build Status](https://travis-ci.org/annikoff/test_app_blog.svg?branch=master)](https://travis-ci.org/annikoff/test_app_blog)
+[![Code Climate](https://codeclimate.com/github/annikoff/test_app_blog/badges/gpa.svg)](https://codeclimate.com/github/annikoff/test_app_blog)
+[![Test Coverage](https://codeclimate.com/github/annikoff/test_app_blog/badges/coverage.svg)](https://codeclimate.com/github/annikoff/test_app_blog/coverage)
 
 ### Test user data
 - Email: user@example.com
