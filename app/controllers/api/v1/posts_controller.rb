@@ -5,7 +5,7 @@ module API
       before_action :find_post, only: [:show, :update, :destroy]
 
       def index
-        scope = posts.offset(page).limit(limit)
+        scope = posts.offset(offset).limit(limit)
         render json: { total_count: posts_count, pages: pages, posts: scope }
       end
 
@@ -50,8 +50,9 @@ module API
         @user.posts
       end
 
-      def page
-        @page ||= params[:page].to_i - 1
+      def offset
+        offset = params[:page].to_i
+        offset.zero? ? offset : offset - 1
       end
 
       def pages
