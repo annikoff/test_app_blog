@@ -1,3 +1,4 @@
+dist: trusty
 language: ruby
 rvm: 2.3.3
 
@@ -8,6 +9,8 @@ addons:
 
 notifications:
   email: false
+
+before_install: gem update --system
 
 before_script:
   - cp config/database.yml.travis config/database.yml
