@@ -11,12 +11,12 @@ curl http://<host>/api/v1/posts.json -u email:password
 
 ### POST /api/v1/posts.json
 ```bash
-curl -v -H "Content-Type: application/json" -X POST --data-binary '{"title":"Title", "body":"Body"}' -u email:password http://0.0.0.0:3000/api/v1/posts.json
+curl -v -H "Content-Type: application/json" -X POST --data-binary '{"title":"Title", "body":"Body"}' -u email:password http://<host>/api/v1/posts.json
 ```
 
 ### PUT /api/v1/posts/:id.json
 ```bash
-curl -v -H "Content-Type: application/json" -X PUT --data-binary '{"title":"New title"}' -u email:password http://0.0.0.0:3000/api/v1/posts/1.json
+curl -v -H "Content-Type: application/json" -X PUT --data-binary '{"title":"New title"}' -u email:password http://<host>/api/v1/posts/1.json
 ```
 
 ### GET /api/v1/posts/:id.json
