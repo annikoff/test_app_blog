@@ -4,10 +4,6 @@
 [![Code Climate](https://codeclimate.com/github/annikoff/test_app_blog/badges/gpa.svg)](https://codeclimate.com/github/annikoff/test_app_blog)
 [![Test Coverage](https://codeclimate.com/github/annikoff/test_app_blog/badges/coverage.svg)](https://codeclimate.com/github/annikoff/test_app_blog/coverage)
 
-### Test user data
-- Email: user@example.com
-- Password: 123456
-
 ### GET /api/v1/posts.json
 ```bash
 curl http://<host>/api/v1/posts.json -u email:password
